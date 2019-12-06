@@ -6,6 +6,7 @@ class ConfirmDom extends Component {
     super(props);
     this.state = {
       show: false,
+      isMount: false,
     }
   }
   cb = {}
@@ -54,6 +55,11 @@ class ConfirmDom extends Component {
       </div>
     )
   }
+  componentDidMount(){
+    this.setState({
+      isMount: true,
+    })
+  }
 }
 var div = "";
 
@@ -77,19 +83,17 @@ let methods = {
     this.ref.on("hanlderOk",fn)
   }
 }
+
 function Confirm(label){
   return (
-    new Promise((res, rej)=>{
+    new Promise((resolve, reject)=>{
       methods.init(label);
-      if (div) {
-        res()
-      } else {
-        rej()
-      }
+      resolve()
     }).then(()=>{
-      return methods;
-    }).catch(()=>{
-      console.log("error")
+      if (methods.ref.state.isMount) {
+        methods.show();
+        return methods
+      }
     })
   )
 }

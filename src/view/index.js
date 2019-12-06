@@ -25,11 +25,7 @@ class View extends Component {
   }
   async componentDidMount(){
     var res = await Confirm("确定删除吗");
-    if (res) {
-      console.log("是")
-    } else {
-      console.log("否")
-    }
+    console.log(res ? "是": "否")
   }
 }
 export default View;

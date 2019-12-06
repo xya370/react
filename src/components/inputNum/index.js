@@ -26,7 +26,7 @@ class InputNum extends Component {
       <div className = "inputNum">
         <div className = "inputNum_main">
           <input value= {this.value} onChange={(e)=>{
-            var targetVal = e.target.value;
+            var targetVal = e.target.value || " ";
             this.setState({
               errorVal: !rex.test(targetVal)
             })
