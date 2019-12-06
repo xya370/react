@@ -1,0 +1,145 @@
+
+a,
+address,
+b,
+big,
+blockquote,
+body,
+center,
+cite,
+code,
+dd,
+del,
+div,
+dl,
+dt,
+em,
+fieldset,
+font,
+form,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+html,
+i,
+iframe,
+img,
+ins,
+label,
+legend,
+li,
+ol,
+p,
+pre,
+small,
+span,
+strong,
+u,
+ul,
+var,
+button,
+input,
+textarea {
+    margin: 0;
+    padding: 0;
+}
+
+fieldset,
+img,
+input,
+button {
+    border: none;
+    outline-style: none;
+}
+
+ul,
+ol {
+    list-style: none;
+}
+
+input {
+    font-family: "Helvetica", " Microsoft YaHei";
+    font-size: 14px;
+}
+
+select,
+input {
+    vertical-align: middle;
+}
+
+select,
+input,
+textarea {
+    font-size: 14px;
+    outline: none;
+    resize: none;
+}
+
+img {
+    border: 0;
+    vertical-align: middle;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    text-decoration: none;
+    font-weight: normal;
+    font-size: 100%;
+}
+
+s,
+i,
+em {
+    font-style: normal;
+    text-decoration: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+button::-moz-focus-inner {
+    margin: 0;
+    padding: 0px 0 2px;
+    border: none;
+}
+span{
+    display: inline-block;
+}
+
+div{
+    box-sizing: border-box
+}
+html{
+    height:100%;
+    width: 100%;
+}
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+.view {
+    padding: 10px;
+}

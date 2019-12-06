@@ -1,0 +1,39 @@
+.confirm {
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  top: 30px;
+  z-index: 2;
+  background: #fff;
+  box-shadow: 0px 3px 9px rgba(0,0,0,0.4);
+  padding: 8px 10px;
+  &_header {
+    height: 35px;
+  }
+  &_main {
+    //font-size: 14px;
+    text-align: center;
+    margin-bottom: 18px;
+  }
+  &_btns {
+    width: fit-content;
+    margin: auto;
+  }
+  &_btn {
+    padding: 4px 20px;
+    display: inline-block;
+    &:not(:last-of-type) {
+      margin-right: 10px;
+    }
+  }
+  .define {
+    background: #1ba6e5;
+    color: #fff;
+  }
+  .cancle {
+    outline: 1px solid #1ba6e5;
+  }
+  confirm_btn:focus {
+    opacity: 0.8;
+  }
+}
