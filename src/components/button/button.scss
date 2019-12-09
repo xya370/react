@@ -1,0 +1,31 @@
+.button {
+  display: inline-block;
+  margin-bottom: 10px;
+  span {
+    padding: 4px 16px;
+    display:inline-flex;
+    justify-content: center;
+    align-items: center;
+    &:not(:first-of-type) {
+      padding-left: 0;
+    }
+  }
+  &:active {
+    opacity: 0.6;
+  }
+  &:not(:last-of-type) {
+    margin-right: 8px;
+  }
+  &-default {
+    border: 1px solid #4a4a4a;
+    background: #fff;
+  }
+  &-primary {
+    background: #1ba6e5;
+    color: #fff;
+    border: 1px solid #1ba6e5;
+  }
+  &_rander {
+    border-radius: 4px;
+  }
+}

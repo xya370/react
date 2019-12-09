@@ -1,44 +1,52 @@
-import React , {Component} from 'react';
+import React, {Component} from "react";
+import PropsType from "prop-types";
+import Icon from "../icon";
 import "./inputNum.scss";
 class InputNum extends Component {
-  constructor(props) {
+  constructor(props){
     super(props);
     this.state = {
-      inputVal: "",
-      errorVal: false,
+      value: "",
     }
   }
-  get Control(){
-    return (!!this.props.value)
-  }
   get value(){
-    return this.Control ? this.props.value : this.state.inputVal;
+    return this.props.value ? this.props.value : this.state.value;
   }
+  onReduce(){
+    let inputVal = this.value;
+    this.ChangeVal(--inputVal)
+  }
+  ChangeVal(val) {
+    const {value, onChange} = this.props;
+    if(!value) {
+      this.setState({
+        value: val
+      })
+    }
+    if (onChange) {onChange(val)}
+  }
+  onAdd(){
+    let inputVal = this.value;
+    this.ChangeVal(++inputVal)
+  }
+
   componentDidMount(){
+    let inputVal = this.props.defaultVal;
     this.setState({
-      inputVal: this.props.defaultVal
+      value: inputVal
     })
   }
   render(){
-    let {onChange} = this.props;
-    let rex = /^\d*$/;
+    const {onChange,value} = this.props;
     return (
-      <div className = "inputNum">
-        <div className = "inputNum_main">
-          <input value= {this.value} onChange={(e)=>{
-            var targetVal = (e.target.value).trim() || " ";
-            this.setState({
-              errorVal: !rex.test(targetVal)
-            })
-            if(!this.Control) {
-              this.setState({
-                inputVal: targetVal
-              })
-            }
-            if(onChange){onChange(e)}
-          }}/>
+      <div className="inputNum">
+        <div className="inputNum-left inputNum-icon" onClick={this.onReduce.bind(this)}>
+          <Icon name="reduce"/>
         </div>
-        {this.state.errorVal && <div className="inputNum_error">仅能输入数字</div>}
+        <div className="inputNum-center"><input type="number" value = {this.value} onChange={(e)=>{
+         this.ChangeVal(e.target.value)
+        }}/></div>
+        <div className="input-right inputNum-icon" onClick={this.onAdd.bind(this)}><Icon name = "addgrey"/></div>
       </div>
     )
   }

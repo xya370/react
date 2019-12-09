@@ -1,0 +1,65 @@
+{
+  "id": "1537491",
+  "name": "react-my",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "529748",
+      "name": "add",
+      "font_class": "addgrey",
+      "unicode": "e683",
+      "unicode_decimal": 59011
+    },
+    {
+      "icon_id": "1094483",
+      "name": "减",
+      "font_class": "reduce",
+      "unicode": "e6b4",
+      "unicode_decimal": 59060
+    },
+    {
+      "icon_id": "4682499",
+      "name": "select",
+      "font_class": "select",
+      "unicode": "e611",
+      "unicode_decimal": 58897
+    },
+    {
+      "icon_id": "4682515",
+      "name": "add",
+      "font_class": "add",
+      "unicode": "e616",
+      "unicode_decimal": 58902
+    },
+    {
+      "icon_id": "4682517",
+      "name": "arrow-down",
+      "font_class": "arrow-down",
+      "unicode": "e617",
+      "unicode_decimal": 58903
+    },
+    {
+      "icon_id": "4682519",
+      "name": "arrow-left",
+      "font_class": "arrow-left",
+      "unicode": "e618",
+      "unicode_decimal": 58904
+    },
+    {
+      "icon_id": "11713014",
+      "name": "search close",
+      "font_class": "searchclose",
+      "unicode": "e608",
+      "unicode_decimal": 58888
+    },
+    {
+      "icon_id": "12135372",
+      "name": "close",
+      "font_class": "closewhite",
+      "unicode": "e65c",
+      "unicode_decimal": 58972
+    }
+  ]
+}
