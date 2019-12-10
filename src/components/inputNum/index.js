@@ -1,12 +1,20 @@
 import React, {Component} from "react";
-import PropsType from "prop-types";
 import Icon from "../icon";
 import "./inputNum.scss";
+import PropTypes from 'prop-types'
 class InputNum extends Component {
+  static propTypes = {
+    onChange: PropTypes.func,
+  }
+
+  static defaultProps = {
+    onChange: () => {}
+  }
   constructor(props){
     super(props);
     this.state = {
       value: "",
+      errorInfo: "",
     }
   }
   get value(){
@@ -16,37 +24,50 @@ class InputNum extends Component {
     let inputVal = this.value;
     this.ChangeVal(--inputVal)
   }
-  ChangeVal(val) {
+  ChangeVal(val,e) {
     const {value, onChange} = this.props;
     if(!value) {
       this.setState({
         value: val
       })
     }
-    if (onChange) {onChange(val)}
+    onChange(val,e)
   }
   onAdd(){
+    let {max} = this.props
     let inputVal = this.value;
-    this.ChangeVal(++inputVal)
+    var inde = ++inputVal;
+    if(inde > max) {
+      this.setState({
+        errorInfo: "输入最大值为"+max
+      })
+      return
+    }
+    this.ChangeVal(inde)
   }
 
   componentDidMount(){
     let inputVal = this.props.defaultVal;
+    this.numInput.focus();
     this.setState({
       value: inputVal
     })
   }
   render(){
-    const {onChange,value} = this.props;
     return (
-      <div className="inputNum">
-        <div className="inputNum-left inputNum-icon" onClick={this.onReduce.bind(this)}>
-          <Icon name="reduce"/>
+      <div>
+        <div className="inputNum">
+          <div className="inputNum-left inputNum-icon" onClick={this.onReduce.bind(this)}>
+            <Icon name="reduce"/>
+          </div>
+          <div className="inputNum-center">
+            <input type="number" value = {this.value} ref={(input) => { this.numInput = input; }}
+            onChange={(e)=>{
+            this.ChangeVal(e.target.value, e)
+          }} /></div>
+          <div className="input-right inputNum-icon" onClick={this.onAdd.bind(this)}><Icon name = "addgrey"/></div>
         </div>
-        <div className="inputNum-center"><input type="number" value = {this.value} onChange={(e)=>{
-         this.ChangeVal(e.target.value)
-        }}/></div>
-        <div className="input-right inputNum-icon" onClick={this.onAdd.bind(this)}><Icon name = "addgrey"/></div>
+        {this.state.errorInfo && <span>{this.state.errorInfo}</span>}
       </div>
     )
   }

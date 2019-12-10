@@ -116,6 +116,7 @@ button::-moz-focus-inner {
 }
 span{
     display: inline-block;
+    box-sizing: border-box;
 }
 
 div{

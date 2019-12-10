@@ -1,0 +1,45 @@
+.tabBar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 10px 10px 45px;
+}
+.tabBar-tabs {
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.tabbarItem {
+  flex: 1 1;
+  display: flex;
+  &-span {
+    padding: 10px 8px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  &-active {
+    background: #1ba6e5;
+    color: #fff;
+  }
+  &-icon {
+    &_only {
+      padding: 4px 8px;
+    }
+  }
+  &-both {
+    padding: 8px 8px;
+    img {
+      width: 20px;
+      margin-right: 4px;
+    }
+    span {
+     margin-right: 4px;
+    }
+  }
+}
