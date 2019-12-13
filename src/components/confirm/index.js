@@ -3,27 +3,10 @@ import ReactDOM from "react-dom";
 import "./confirm.scss";
 class ConfirmDom extends Component {
   constructor(props){
-    super(props);
+    super(props)
     this.state = {
-      show: false,
-      isMount: false,
-    }
-  }
-  cb = {}
-  on(name,cb) {
-    this.cb[name] = cb
-  }
-  off(name) {
-    delete this.cb[name]
-  }
-  trigger(name,args) {
-    if(!this.cb[name]) {return}
-    this.cb[name](args)
-  }
-  show(){
-    this.setState({
       show: true
-    })
+    }
   }
   close(){
     this.setState({
@@ -31,11 +14,9 @@ class ConfirmDom extends Component {
     })
   }
   render(){
-    let {text} = this.props;
+    let {text, onDefine, onCancle} = this.props;
     return (
-      this.state.show
-      &&
-      <div className = "confirm">
+      this.state.show && <div className = "confirm">
         <div className = "confirm_header"></div>
         <div className = "confirm_main">
           {text}
@@ -43,58 +24,30 @@ class ConfirmDom extends Component {
         <div className = "confirm_foot">
           <div className = "confirm_btns">
             <div className = "confirm_btn define" onClick={(e)=>{
-              this.trigger("hanlderOk");
-              this.close();
+              this.close()
+              if(onDefine){onDefine()}
             }}>确定</div>
             <div className="confirm_btn cancle" onClick={(e)=>{
-              this.trigger("hanlderCancle");
-              this.close();
+              this.close()
+              if(onCancle){onCancle()}
             }}>取消</div>
           </div>
         </div>
       </div>
     )
   }
-  componentDidMount(){
-    this.setState({
-      isMount: true,
-    })
-  }
 }
-var div = "";
-
-let methods = {
-  ref: "",
-  init(label){
-    div = document.createElement("div");
-    document.body.appendChild(div);
-    ReactDOM.render(<ConfirmDom text={label} ref={el=>{this.ref = el}}/>, div)
-  },
-  show(){
-    this.ref.show();
-  },
-  hide(){
-    this.ref.close();
-  },
-  hanlderOK(fn){
-    this.ref.on("hanlderOk",fn);
-  },
-  hanlderCancle(fn) {
-    this.ref.on("hanlderOk",fn)
-  }
-}
-
 function Confirm(label){
-  return (
-    new Promise((resolve, reject)=>{
-      methods.init(label);
+  return new Promise((resolve,reject)=>{
+    var div = document.createElement("div");
+    document.body.appendChild(div);
+    ReactDOM.render(<ConfirmDom text={label} onDefine={(e)=>{
       resolve()
-    }).then(()=>{
-      if (methods.ref.state.isMount) {
-        methods.show();
-        return methods
-      }
-    })
-  )
+    }} onCancle = {(e)=>{
+      if(reject){reject()}
+    }}/>, div)
+  }).then(()=>{
+    return "confirm"
+})
 }
 export default Confirm;

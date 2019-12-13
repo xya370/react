@@ -31,7 +31,7 @@ class Button extends Component {
     return status;
   }
   render(){
-    return <div className={this.ClassName}>
+    return <div className={this.ClassName} onClick={this.onClick.bind(this)}>
       {this.props.icon && <Icon name={this.props.icon}/> }
       {this.props.children && <span>{this.props.children}</span>}
     </div>
