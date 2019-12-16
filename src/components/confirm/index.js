@@ -24,12 +24,12 @@ class ConfirmDom extends Component {
         <div className = "confirm_foot">
           <div className = "confirm_btns">
             <div className = "confirm_btn define" onClick={(e)=>{
-              this.close()
               if(onDefine){onDefine()}
+              this.close()
             }}>确定</div>
             <div className="confirm_btn cancle" onClick={(e)=>{
-              this.close()
               if(onCancle){onCancle()}
+              this.close()
             }}>取消</div>
           </div>
         </div>
@@ -38,8 +38,9 @@ class ConfirmDom extends Component {
   }
 }
 function Confirm(label){
+  var div ;
   return new Promise((resolve,reject)=>{
-    var div = document.createElement("div");
+    div = document.createElement("div");
     document.body.appendChild(div);
     ReactDOM.render(<ConfirmDom text={label} onDefine={(e)=>{
       resolve()
@@ -47,7 +48,8 @@ function Confirm(label){
       if(reject){reject()}
     }}/>, div)
   }).then(()=>{
+    ReactDOM.unmountComponentAtNode(div);
     return "confirm"
-})
+  })
 }
 export default Confirm;

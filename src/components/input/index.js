@@ -1,11 +1,11 @@
 import React , {Component} from 'react';
 import "./input.scss";
+import Icon from "../icon";
 class InputNum extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      inputVal: "",
-      errorVal: false,
+      inputVal: " ",
     }
   }
   get Control(){
@@ -16,29 +16,32 @@ class InputNum extends Component {
   }
   componentDidMount(){
     this.setState({
-      inputVal: this.props.defaultVal
+      inputVal: this.props.defaultVal || " "
     })
   }
   render(){
-    let {onChange} = this.props;
-    let rex = /^\d*$/;
+    let {onChange, suffixEvent, suffixIcon} = this.props;
     return (
       <div className = "input">
         <div className = "input_main">
           <input value= {this.value} onChange={(e)=>{
-            var targetVal = (e.target.value).trim() || " ";
-            this.setState({
-              errorVal: !rex.test(targetVal)
-            })
+            var targetVal = (e.target.value).trim();
             if(!this.Control) {
               this.setState({
-                inputVal: targetVal
+                inputVal: targetVal || " "
               })
             }
             if(onChange){onChange(e)}
           }}/>
         </div>
-        {this.state.errorVal && <div className="input_error">仅能输入数字</div>}
+        {suffixIcon &&
+          <div className="input_fix input_icon" onClick = {(e)=>{
+            if (suffixEvent) {
+              suffixEvent(this.value);
+            }
+          }}>
+            <Icon name = {suffixIcon}/>
+          </div>}
       </div>
     )
   }

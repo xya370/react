@@ -1,0 +1,43 @@
+.todoList_cell {
+  display: flex;
+  padding: 8px 4px;
+  align-items: center;
+  border-bottom: 1px solid rgba(0,0,0,.2);
+  &-checkbox {
+    margin-right: 8px;
+  }
+  &-content {
+    flex: 1 1;
+    text-align: left;
+    display: flex;
+    .cell_span {
+      flex: 1 1;
+    }
+  }
+  &-btns {
+    .button {
+      margin-bottom: 0;
+    }
+  }
+}
+.delLine {
+  text-decoration: line-through;
+}
+.todoList {
+  padding: 10px;
+  box-shadow: 0px 3px 9px rgba(0, 0, 0, 0.4)
+}
+.edit_form{
+  padding: 0 20%;
+  .edit_cell {
+    display: flex;
+    justify-items: center;
+    align-items: baseline;
+    .edit_label {
+      width: 100px
+    }
+    .edit_input {
+      flex: 1 1;
+    }
+  }
+}
