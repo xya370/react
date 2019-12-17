@@ -5,11 +5,8 @@ import Confirm from "../../components/confirm";
 import TodoEdit from "./todoListEdit";
 import "./todoList.scss";
 class TodoListCell extends Component {
-  constructor(props) {
-    super(props);
-  }
   render(){
-    const {checked, data, onCheck, delect, edit} = this.props;
+    const {data, onCheck, delect, edit} = this.props;
     return (
       <div className="todoList_cell">
         <div className="todoList_cell-checkbox">
@@ -33,6 +30,18 @@ class TodoListCell extends Component {
         </div>
       </div>
     )
+  }
+}
+class TodoColumns  extends Component{
+  render(){
+    const {columns} = this.props
+    let columnsItem = columns.map((item,index)=>{
+      return <div className = "cell_span" key={item.key}>{item.title}</div>
+    })
+    return <div className="todoList_th">
+      {columnsItem}
+      <div className="cell_span activeLable">操作</div>
+    </div>
   }
 }
 class TodoListBody extends Component {
@@ -82,13 +91,22 @@ class TodoList extends Component {
       editIndex:"",
       confirm: "",
       dialogVisible: false,
+      columns: [{
+        title: '标题',
+        dataIndex: "title",
+        key: "title",
+      },{
+        title: '完成时间',
+        dataIndex: "time",
+        key: "time"
+      }]
     }
   }
   getRandId(){
     return Math.random().toString(36).substr(2)
   }
   render(){
-    let {data,dialogVisible, editIndex} = this.state;
+    let {data,dialogVisible, editIndex, columns} = this.state;
     return (
         <div>
           <div className="todoList">
@@ -102,6 +120,7 @@ class TodoList extends Component {
                 this.setState(data)
               }} suffixIcon="add"/>
             </div>
+            <TodoColumns columns = {columns} />
             <div className ="todoList-body">
               <div className = "todoList_table">
                 <TodoListBody data = {this.state.data}

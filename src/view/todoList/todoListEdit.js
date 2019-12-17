@@ -11,7 +11,9 @@ class TodoEdit extends Component {
     }
   }
   get editData(){
-    return Object.keys(this.state.editData).length > 0 ?this.state.editData : this.props.data
+    return Object.keys(this.state.editData).length > 0
+      ? this.state.editData
+      : this.props.data
   }
   get foot(){
     const {saveHandler} = this.props;
@@ -23,7 +25,7 @@ class TodoEdit extends Component {
             </div>
   }
   render(){
-    const {visible, closeHandler,data} = this.props;
+    const {visible, closeHandler} = this.props;
     var editData = this.editData;
     return (
         <Dialog visible={visible} title="编辑" closeHandler = {closeHandler} foot={this.foot}>
@@ -31,7 +33,7 @@ class TodoEdit extends Component {
             <div className="edit_cell">
               <div className="edit_label">标题</div>
               <div className="edit_input">
-                <Input defaultVal = {editData && editData.title} onChange={(e)=>{
+                <Input value = {editData && editData.title} onChange={(e)=>{
                   editData.title = e.target.value;
                   this.setState(editData)
                 }}/>

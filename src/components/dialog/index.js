@@ -3,11 +3,6 @@ import Icon from "../icon";
 import "../../theme.scss";
 import "./dialog.scss";
 class Dialog extends Component{
-  constructor(props) {
-    super(props);
-  }
-  close(){
-  }
   render(){
     const {visible, foot, title, closeHandler} = this.props
     return (
